@@ -5,6 +5,24 @@
     <e p="C:\Users\sven\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_AdventOfCode2019.1122056008.00" t="ExcludeRecursive" />
     <e p="D:\RiderProjects\AdventOfCode2019" t="IncludeFlat">
       <e p="AdventOfCode2019.sln" t="IncludeFlat" />
+      <e p="Day1" t="IncludeRecursive">
+        <e p="AssemblyInfo.fs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Day1.fsproj" t="IncludeRecursive" />
+        <e p="input1.txt" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Utils" t="IncludeRecursive">
+        <e p="AssemblyInfo.fs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Utils.fs" t="Include" />
+        <e p="Utils.fsproj" t="IncludeRecursive" />
+      </e>
     </e>
   </component>
 </project>
