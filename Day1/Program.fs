@@ -35,7 +35,7 @@ let part2 lines =
 
 [<EntryPoint>]
 let main _ = 
-    let lines = readFile "input1.txt"
+    let lines = readFileLines "input1.txt"
     
     printfn "Required Fuel by modules: %d" <| part1 lines
     printfn "Total required Fuel: %d" <| part2 lines
