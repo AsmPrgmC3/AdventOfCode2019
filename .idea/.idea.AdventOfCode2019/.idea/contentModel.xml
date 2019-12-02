@@ -18,6 +18,7 @@
         <e p="AssemblyInfo.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Day2.fsproj" t="IncludeRecursive" />
+        <e p="input1.txt" t="Include" />
         <e p="input2.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
