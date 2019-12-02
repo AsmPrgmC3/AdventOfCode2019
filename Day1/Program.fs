@@ -9,8 +9,8 @@ let calculateFuel =
 let rec calculateExtraFuel fuel =
     let extra = calculateFuel fuel
     if extra <= 0
-        then 0
-        else extra + calculateExtraFuel extra
+    then 0
+    else extra + calculateExtraFuel extra
 
 
 let calculateTotalFuel mass =
