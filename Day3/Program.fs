@@ -7,26 +7,6 @@ type Direction =
     | Down
     | Left
 
-type Line =
-    | HorizontalLine of y: int * startX: int * endX: int
-    | VerticalLine of x: int * startY: int * endY: int
-
-let doIntersect x smallY largeY y smallX largeX =
-    if smallX <= x && x <= largeX &&
-        smallY <= y && y <= largeY
-    then Some (x, y)
-    else None
-
-let intersectLines = function
-    | HorizontalLine (y, startX, endX) -> function
-        | HorizontalLine _ -> None
-        | VerticalLine (x, startY, endY) ->
-            doIntersect x startY endY y startX endX
-     | VerticalLine (x, startY, endY) -> function
-         | VerticalLine _ -> None
-         | HorizontalLine (y, startX, endX) ->
-             doIntersect x startY endY y startX endX
-
 
 let tracePath (line: string) =
     line.Split(',')
@@ -38,15 +18,16 @@ let tracePath (line: string) =
         | 'D' -> Down, length
         | 'L' -> Left, length
         | x -> raise (new ArgumentException(sprintf "'%c' is not a valid direction" x)))
-    |> Seq.fold (fun ((_, (lx, ly)) :: _ as trace) -> function
-        | Up, length -> (VerticalLine(lx, ly-length, ly), (lx, ly-length)) :: trace
-        | Right, length -> (HorizontalLine(ly, lx, lx+length), (lx+length, ly)) :: trace
-        | Down, length -> (VerticalLine(lx, ly, ly+length), (lx, ly+length)) :: trace
-        | Left, length -> (HorizontalLine(ly, lx-length, lx), (lx-length, ly)) :: trace)
-        [HorizontalLine(0, 0, 0), (0, 0); HorizontalLine(0, 0, 0), (0, 0)]
-    |> Seq.map (fun (line, _) -> line)
-    |> Seq.toList
-    |> List.filter ((<>) (HorizontalLine(0, 0, 0)))
+    |> Seq.collect (fun (dir, length) ->
+        Seq.replicate length dir)
+    |> Seq.fold (fun ((lx, ly), trace: Set<int * int>) -> function
+        | Up -> (lx, ly-1), trace.Add(lx, ly-1)
+        | Right -> (lx+1, ly), trace.Add(lx+1, ly)
+        | Down -> (lx, ly+1), trace.Add(lx, ly+1)
+        | Left -> (lx-1, ly), trace.Add(lx-1, ly))
+        ((0, 0), Set.empty)
+    |> (fun (_, trace) -> trace)
+    |> Set.remove (0, 0)
 
 
 [<EntryPoint>]
@@ -58,8 +39,7 @@ let main _ =
     let path2 = tracePath lines.[1]
     
     path1
-    |> Seq.collect (fun a ->
-        List.choose (intersectLines a) path2)
+    |> Seq.filter (flip Set.contains path2)
     |> Seq.map (fun (x, y) -> abs(x) + abs(y))
     |> Seq.filter ((<>) 0)
     |> Seq.min
