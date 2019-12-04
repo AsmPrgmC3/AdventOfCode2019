@@ -20,15 +20,15 @@ let tracePath (line: string) =
         | x -> raise (new ArgumentException(sprintf "'%c' is not a valid direction" x)))
     |> Seq.collect (fun (dir, length) ->
         Seq.replicate length dir)
-    |> Seq.fold (fun ((lx, ly), trace: Set<int * int>, map: Map<int * int, int>, step) dir ->
+    |> Seq.fold (fun ((lx, ly), map: Map<int * int, int>, step) dir ->
         let next = match dir with
                    | Up -> lx, ly-1
                    | Right -> lx+1, ly
                    | Down -> lx, ly+1
                    | Left -> lx-1, ly
-        next, trace.Add next, map.Add(next, step+1), step+1)
-        ((0, 0), Set.empty, Map.empty, 0)
-    |> (fun (_, trace, distanceMap, _) -> trace.Remove(0, 0), distanceMap)
+        next, map.Add(next, step+1), step+1)
+        ((0, 0), Map.empty, 0)
+    |> (fun (_, distanceMap, _) -> distanceMap.Remove(0, 0))
 
 
 [<EntryPoint>]
@@ -36,10 +36,13 @@ let main _ =
     
     let lines = Seq.toList <| readFileLines "input1.txt"
     
-    let path1, distances1 = tracePath lines.[0]
-    let path2, distances2 = tracePath lines.[1]
+    let distances1 = tracePath lines.[0]
+    let distances2 = tracePath lines.[1]
     
-    let crossOvers = Set.filter (flip Set.contains path2) path1
+    let crossOvers = distances1
+                     |> Map.toSeq
+                     |> Seq.map fst
+                     |> Seq.filter (flip Map.containsKey distances2)
     
     crossOvers
     |> Seq.map (fun (x, y) -> abs(x) + abs(y))
