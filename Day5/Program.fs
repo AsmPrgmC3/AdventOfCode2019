@@ -20,12 +20,20 @@ type Operation =
     | Multiply
     | Input
     | Output
+    | JumpIfTrue
+    | JumpIfFalse
+    | LessThan
+    | Equals
 module Operation =
     let fromInt = function
         | 1 -> Add
         | 2 -> Multiply
         | 3 -> Input
         | 4 -> Output
+        | 5 -> JumpIfTrue
+        | 6 -> JumpIfFalse
+        | 7 -> LessThan
+        | 8 -> Equals
         | 99 -> Halt
         | x -> raise (new ArgumentException(sprintf "opcode '%d' undefined" x))
 
@@ -35,6 +43,10 @@ module Operation =
         | Multiply -> 3
         | Input -> 1
         | Output -> 1
+        | JumpIfTrue -> 2
+        | JumpIfFalse -> 2
+        | LessThan -> 3
+        | Equals -> 3
     
     let padArguments instruction arguments =
         let providedArguments = List.length arguments
@@ -62,11 +74,31 @@ module Instruction =
                 ParameterMode.getValue memory memory.[pos+2] mode2
             pos + 4
         | Instruction(Input, _) ->
-            memory.[memory.[pos+1]] <- 1
+            memory.[memory.[pos+1]] <- inputNumber ()
             pos + 2
         | Instruction(Output, [mode]) ->
             printfn "%d" <| ParameterMode.getValue memory memory.[pos+1] mode
             pos + 2
+        | Instruction(JumpIfTrue, [mode1; mode2]) ->
+            if ParameterMode.getValue memory memory.[pos+1] mode1 <> 0
+            then ParameterMode.getValue memory memory.[pos+2] mode2
+            else pos + 3
+        | Instruction(JumpIfFalse, [mode1; mode2]) ->
+            if ParameterMode.getValue memory memory.[pos+1] mode1 = 0
+            then ParameterMode.getValue memory memory.[pos+2] mode2
+            else pos + 3
+        | Instruction(LessThan, [mode1; mode2; _]) ->
+            memory.[memory.[pos+3]] <-
+                if ParameterMode.getValue memory memory.[pos+1] mode1 < ParameterMode.getValue memory memory.[pos+2] mode2
+                then 1
+                else 0
+            pos + 4
+        | Instruction(Equals, [mode1; mode2; _]) ->
+            memory.[memory.[pos+3]] <-
+                if ParameterMode.getValue memory memory.[pos+1] mode1 = ParameterMode.getValue memory memory.[pos+2] mode2
+                then 1
+                else 0
+            pos + 4
         | instruction ->
             raise (new ArgumentException(sprintf "Illegal instruction: %A" instruction))
 
