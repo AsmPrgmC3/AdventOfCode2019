@@ -1,4 +1,5 @@
-﻿open Utils.Utils
+﻿open System
+open Utils.Utils
 
 
 let numOrbits orbits object =
@@ -8,6 +9,29 @@ let numOrbits orbits object =
         else orbitsSoFar
     
     countOrbits object 0
+
+
+let findRoute orbits fromObject toObject =
+    let keys =
+        orbits
+        |> Map.toSeq
+        |> Seq.map fst
+        |> Seq.toList
+    
+    let rec search lastObject currentLength currentObject =
+        if currentObject = toObject then
+            currentLength
+        else
+            let lengths =
+                keys
+                |> Seq.filter (flip Map.find orbits >> (=) currentObject)
+                |> Seq.append (if orbits.ContainsKey(currentObject) then [orbits.[currentObject]] else [])
+                |> Seq.filter ((<>) lastObject)
+                |> Seq.map (search currentObject (currentLength + 1))
+                |> Seq.toList
+            if lengths.Length = 0 then Int32.MaxValue else List.min lengths
+    
+    search fromObject -2 fromObject
 
 
 [<EntryPoint>]
@@ -24,5 +48,7 @@ let main _ =
     |> Seq.map (fun object -> numOrbits orbits object)
     |> Seq.sum
     |> printfn "Number of orbits: %d"
+    
+    printfn "Jumps required: %d" <| findRoute orbits "YOU" "SAN"
     
     0 // return an integer exit code
