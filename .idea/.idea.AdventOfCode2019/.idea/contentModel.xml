@@ -1,75 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\sven\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sven\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_AdventOfCode2019.1122056008.00" t="ExcludeRecursive" />
+    <e p="D:\RiderProjects\AdventOfCode2019" t="IncludeFlat">
       <e p="AdventOfCode2019.sln" t="IncludeFlat" />
       <e p="Day1" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Day1.fsproj" t="IncludeRecursive" />
-        <e p="Program.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Day1.fsproj" t="IncludeRecursive" />
         <e p="input1.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
       </e>
       <e p="Day2" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Day2.fsproj" t="IncludeRecursive" />
-        <e p="Program.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Day2.fsproj" t="IncludeRecursive" />
         <e p="input1.txt" t="Include" />
         <e p="input2.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
       </e>
       <e p="Day3" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Day3.fsproj" t="IncludeRecursive" />
-        <e p="Program.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Day3.fsproj" t="IncludeRecursive" />
         <e p="input1.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
       </e>
       <e p="Day4" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Day4.fsproj" t="IncludeRecursive" />
-        <e p="Program.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Day4.fsproj" t="IncludeRecursive" />
         <e p="input1.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
       </e>
       <e p="Day5" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Day5.fsproj" t="IncludeRecursive" />
-        <e p="Program.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Day5.fsproj" t="IncludeRecursive" />
         <e p="input1.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
       </e>
       <e p="Day6" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Day6.fsproj" t="IncludeRecursive" />
-        <e p="Program.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Day6.fsproj" t="IncludeRecursive" />
         <e p="input1.txt" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
       </e>
+      <e p="Day7" t="IncludeRecursive">
+        <e p="AssemblyInfo.fs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Day7.fsproj" t="IncludeRecursive" />
+        <e p="input1.txt" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
+      </e>
+      <e p="IntcodeComputer" t="IncludeRecursive">
+        <e p="AssemblyInfo.fs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="IntcodeComputer.fsproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.fs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
       <e p="Utils" t="IncludeRecursive">
         <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Utils.fs" t="Include" />
-        <e p="Utils.fsproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Utils.fs" t="Include" />
+        <e p="Utils.fsproj" t="IncludeRecursive" />
       </e>
-      <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_AdventOfCode2019.-334514675.00" t="ExcludeRecursive" />
   </component>
 </project>

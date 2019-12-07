@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1F9C42D-DD29-42E7-AE64-CD1DF422409F}</ProjectGuid>
+    <ProjectGuid>{05E96DD7-D6FE-48FD-BFB9-2ABC28512D56}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day5</RootNamespace>
-    <AssemblyName>Day5</AssemblyName>
+    <RootNamespace>Day7</RootNamespace>
+    <AssemblyName>Day7</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
@@ -53,10 +53,6 @@
     <ProjectReference Include="..\IntcodeComputer\IntcodeComputer.fsproj">
       <Project>{a4819eb5-5dfd-419a-b244-a5ebbb2f4329}</Project>
       <Name>IntcodeComputer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.fsproj">
-      <Project>{084060c1-6da2-4020-ae18-b60480e5cc26}</Project>
-      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />

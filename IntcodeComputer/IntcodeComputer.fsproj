@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1F9C42D-DD29-42E7-AE64-CD1DF422409F}</ProjectGuid>
+    <ProjectGuid>{A4819EB5-5DFD-419A-B244-A5EBBB2F4329}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day5</RootNamespace>
-    <AssemblyName>Day5</AssemblyName>
+    <RootNamespace>IntcodeComputer</RootNamespace>
+    <AssemblyName>IntcodeComputer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
@@ -45,15 +45,8 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Program.fs" />
     <Content Include="packages.config" />
-    <Content Include="input1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IntcodeComputer\IntcodeComputer.fsproj">
-      <Project>{a4819eb5-5dfd-419a-b244-a5ebbb2f4329}</Project>
-      <Name>IntcodeComputer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.fsproj">
       <Project>{084060c1-6da2-4020-ae18-b60480e5cc26}</Project>
       <Name>Utils</Name>
