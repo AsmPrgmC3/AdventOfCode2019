@@ -125,7 +125,7 @@ module Instruction =
             Instruction(operation, arguments)
 
 
-let rec executeProgram inputLeft currentOutput memory pos =
+let rec runProgram inputLeft currentOutput memory pos =
     let mutable input = inputLeft
     let ``in`` () =
         if List.length input > 0
@@ -142,10 +142,34 @@ let rec executeProgram inputLeft currentOutput memory pos =
     
     let newPos = Instruction.execute ``in`` out memory pos <| Instruction.fromInt memory.[pos]
     
-    if newPos = pos then
-        List.rev output
-    else
-        executeProgram input output memory newPos
+    if newPos = pos
+    then List.rev output
+    else runProgram input output memory newPos
+
+
+let rec runUntilOutput inputLeft memory pos =
+    let mutable input = inputLeft
+    let ``in`` () =
+        if List.length input > 0
+        then
+            let num = input.[0]
+            input <- input.[1..]
+            num
+        else
+            Utils.inputNumber ()
+    
+    let mutable output = None
+    let out num =
+        output <- Some num
+    
+    let newPos = Instruction.execute ``in`` out memory pos <| Instruction.fromInt memory.[pos]
+    
+    match output with
+    | None ->
+        if newPos = pos
+        then None
+        else runUntilOutput input memory newPos
+    | Some num -> Some (num, newPos, input)
 
 
 let readInMemory file =

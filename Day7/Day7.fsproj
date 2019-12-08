@@ -54,6 +54,10 @@
       <Project>{a4819eb5-5dfd-419a-b244-a5ebbb2f4329}</Project>
       <Name>IntcodeComputer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.fsproj">
+      <Project>{084060c1-6da2-4020-ae18-b60480e5cc26}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
 </Project>
