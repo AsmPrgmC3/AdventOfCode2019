@@ -5,6 +5,13 @@ open System.IO
 
 let flip f y x = f x y
 
+
+let count value sequence =
+    sequence
+    |> Seq.filter ((=) value)
+    |> Seq.length
+
+
 let readFileLines =
     File.ReadLines
 
