@@ -5,11 +5,11 @@
 let main _ = 
     let memory = IntcodeComputer.readInMemory "input1.txt"
     
-    IntcodeComputer.runProgram [1] [] (Array.copy memory) 0
+    IntcodeComputer.runProgram [1L] [] (IntcodeComputer.newMemory memory) 0
     |> List.last
     |> printfn "Part1: %d"
     
-    IntcodeComputer.runProgram [5] [] (Array.copy memory) 0
+    IntcodeComputer.runProgram [5L] [] (IntcodeComputer.newMemory memory) 0
     |> List.last
     |> printfn "Part2: %d"
     

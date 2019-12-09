@@ -21,7 +21,7 @@ let readFileContent =
 
 let rec inputNumber () =
     let input = Console.ReadLine()
-    let success, number = Int32.TryParse input
+    let success, number = Int64.TryParse input
     if success then number else inputNumber ()
 
 

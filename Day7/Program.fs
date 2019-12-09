@@ -11,25 +11,25 @@ let main _ =
             permutations (xs |> List.except [x])
             |> List.map (fun perm -> x :: perm))
     
-    permutations [0; 1; 2; 3; 4]
-    |> Seq.map (List.fold (fun input phase -> List.last <| IntcodeComputer.runProgram [phase; input] [] (Array.copy memory) 0) 0)
+    permutations [0L; 1L; 2L; 3L; 4L]
+    |> Seq.map (List.fold (fun input phase -> List.last <| IntcodeComputer.runProgram [phase; input] [] (IntcodeComputer.newMemory memory) 0) 0L)
     |> Seq.max
     |> printfn "Maximum thrust: %d"
     
-    permutations [5; 6; 7; 8; 9]
+    permutations [5L; 6L; 7L; 8L; 9L]
     |> Seq.map (fun perm ->
-        let mem1 = Array.copy memory
+        let mem1 = IntcodeComputer.newMemory memory
         let mutable pos1 = 0
-        let mem2 = Array.copy memory
+        let mem2 = IntcodeComputer.newMemory memory
         let mutable pos2 = 0
-        let mem3 = Array.copy memory
+        let mem3 = IntcodeComputer.newMemory memory
         let mutable pos3 = 0
-        let mem4 = Array.copy memory
+        let mem4 = IntcodeComputer.newMemory memory
         let mutable pos4 = 0
-        let mem5 = Array.copy memory
+        let mem5 = IntcodeComputer.newMemory memory
         let mutable pos5 = 0
         
-        let mutable result = 0
+        let mutable result = 0L
         let mutable inputExtras = List.map (fun x -> [x]) perm
         let mutable doContinue = true
         while doContinue do
